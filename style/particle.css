@@ -1,0 +1,30 @@
+/* パーティクル背景 */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    animation: float 25s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}

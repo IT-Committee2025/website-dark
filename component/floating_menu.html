@@ -1,0 +1,54 @@
+<!-- フローティングメニュー（PC） -->
+<div class="floating-menu">
+    <a href="/page/about/" class="floating-menu-item">創作展とは？</a>
+    <!-- <a href="/page/exhibition/" class="floating-menu-item">展示内容紹介</a>
+    <a href="/page/schedule/" class="floating-menu-item">タイムスケジュール</a> -->
+    <a href="/page/lottery/" class="floating-menu-item">抽選申し込み</a>
+    <a href="/page/notice/" class="floating-menu-item">来校時のご注意</a>
+</div>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+    メニュー
+</div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/page/about/" class="mobile-menu-item">創作展とは？</a>
+    <!-- <a href="/page/exhibition/" class="mobile-menu-item">展示内容紹介</a>
+    <a href="/page/schedule/" class="mobile-menu-item">タイムスケジュール</a> -->
+    <a href="/page/lottery/" class="mobile-menu-item">抽選申し込み</a>
+    <a href="/page/notice/" class="mobile-menu-item">来校時のご注意</a>
+</div>
+<script>
+    // モバイルメニューの切り替え
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('show');
+    }
+    // スクロール時のメニュー表示制御
+    function handleScroll() {
+        const scrollPosition = window.scrollY;
+        const triggerHeight = window.innerHeight; // 200px スクロールしたらメニューを表示
+
+        const floatingMenu = document.querySelector('.floating-menu');
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
+        if (scrollPosition > triggerHeight) {
+            floatingMenu.classList.add('show');
+            mobileMenuToggle.classList.add('show');
+        } else {
+            floatingMenu.classList.remove('show');
+            mobileMenuToggle.classList.remove('show');
+        }
+    }
+    // スクロールイベントリスナーを追加
+    window.addEventListener('scroll', handleScroll);
+    // メニュー外クリックで閉じる
+    document.addEventListener('click', function (event) {
+        const menu = document.getElementById('mobileMenu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
+
+</script>
